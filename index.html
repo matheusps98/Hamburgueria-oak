@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OAK burger grill - Home</title>
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins:wght@400&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            background-color: #222222 !important;
+        }
+
+        h1, h2 {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .active::after {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 3px;
+            background-color: #fdd835;
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+        }
+
+        .section-informacoes-burguer {
+            justify-content: center;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .section-principal img:hover {
+            transform: scale(1.1);
+            transition: 1s all;
+        }
+
+        .slide-in-left {
+            animation: slideInLeft 1s ease forwards;
+        }
+
+        .slide-in-right {
+            animation: slideInRight 1s ease forwards;
+        }
+
+        @keyframes slideInLeft {
+            0% {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInRight {
+            0% {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .navigation-buttons {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            z-index: 20;
+        }
+
+        #mobileMenu {
+            display: none;
+            position: fixed;
+            right: 0;
+            top: 0;
+            height: 100%;
+            width: 75%;
+            background-color: gray;
+            z-index: 50;
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+            padding: 20px;
+        }
+
+        #mobileMenu.active {
+            display: block;
+            animation: slideInRight 0.3s forwards;
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100%);
+            }
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideOutRight {
+            from {
+                transform: translateX(0);
+            }
+            to {
+                transform: translateX(100%);
+            }
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 36px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .mobile-menu a {
+            display: block;
+            text-align: left;
+            margin: 20px 0;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .mobile-phone-button {
+            margin-top: 20px;
+            display: block;
+            text-align: center;
+            background-color: #fdd835;
+            color: #222222;
+            padding: 10px;
+            border-radius: 30px;
+            font-weight: bold;
+        }
+
+        .hamburger {
+            display: none;
+            position: absolute;
+            right: 20px;
+            top: 25px;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: #fdd835;
+        }
+        #burger-image{
+            width: 350px;
+            max-height: 280px;
+        }
+
+        /* Desktop styles */
+        @media (min-width: 1024px) {
+            .mobile-only {
+                display: none;
+            }
+            .desktop-main img {
+            width: 500px;
+            height: 450px;
+             }
+
+            .desktop-layout {
+                display: flex;
+                flex-direction: column;
+                min-height: 100vh;
+            }
+
+            .desktop-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 20px 40px;
+                background-color: #222222;
+            }
+
+            .desktop-nav {
+                display: flex;
+                gap: 30px;
+            }
+
+            .desktop-nav a {
+                color: white;
+                text-decoration: none;
+                font-weight: bold;
+                position: relative;
+            }
+
+            .desktop-main {
+                flex: 1;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+            }
+
+            .desktop-burger-title {
+                font-size: 7rem !important;
+                font-weight: bold;
+                color: white !important;
+                position: absolute;
+                top: 15% !important;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 1;
+            }
+
+            .desktop-burger-image {
+                max-width: 80%;
+                height: auto;
+                position: relative;
+                z-index: 2;
+            }
+
+            .desktop-navigation-buttons {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 100%;
+                max-width: 800px;
+                display: flex;
+                justify-content: space-between;
+                transform: translate(-50%, -50%);
+                z-index: 3;
+            }
+
+            .desktop-navigation-buttons button {
+                background-color: #fdd835;
+                color: #222222 !important;
+                width: 64px;
+                height: 64px;
+                border-radius: 50%;
+                font-size: 2rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                transition: background-color 0.3s;
+                border: none;
+            }
+
+            .desktop-info {
+                position: absolute;
+                bottom: 50px !important;
+                right: 5%;
+                text-align: right;
+                z-index: 3;
+            }
+
+            .desktop-social {
+                position: fixed;
+                left: 20px;
+                top: 50%;
+                transform: translateY(-50%);
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+            }
+            @media (min-width: 1024px) {
+        .desktop-main {
+            position: relative;
+            height: calc(100vh - 80px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .desktop-burger-title {
+            font-size: 10rem;
+            font-weight: bold;
+            color: white;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+        }
+
+        .desktop-burger-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .desktop-burger-image {
+            max-width: 100%;
+            height: auto;
+            z-index: 2;
+        }
+
+        .desktop-nav-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: #fdd835;
+            color: #222222;
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            font-size: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            border: none;
+            z-index: 3;
+        }
+
+        .desktop-nav-button.left {
+            left: -32px;
+        }
+
+        .desktop-nav-button.right {
+            right: -32px;
+        }
+
+        .desktop-info {
+            position: absolute;
+            bottom: 20px;
+            right: 5%;
+            text-align: right;
+            z-index: 3;
+            max-width: 400px;
+        }
+    }
+        }
+
+        /* Mobile styles */
+        @media (max-width: 1023px) {
+            .desktop-only {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+                cursor: pointer;
+            }
+
+            .menu-desktop nav {
+                display: none;
+            }
+
+            .menu-desktop .contact-button {
+                display: none;
+            }
+
+            .social-icons {
+                display: flex;
+                justify-content: center;
+                gap: 20px;
+                padding: 20px 0;
+            }
+
+            .section-principal img {
+                width: 300px;
+                height: auto;
+            }
+
+            .section-principal h1 {
+                font-size: 3.5rem;
+            }
+
+            .section-informacoes-burguer {
+                width: auto;
+                bottom: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                text-align: center;
+                position: relative;
+            }
+
+            .section-informacoes-burguer h2 {
+                font-size: 1.25rem;
+            }
+
+            .section-informacoes-burguer p {
+                font-size: 1rem;
+            }
+
+            #mobileMenu {
+                font-size: 1rem !important;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-black text-white">
+    <!-- Desktop Layout -->
+    <div class="desktop-layout desktop-only">
+        <header class="desktop-header">
+            <img src="assets/logo.png" alt="OAK burger grill Logo" class="h-20">
+            <nav class="desktop-nav">
+                <a href="#" class="active">HOME</a>
+                <a href="#">CARDÁPIO</a>
+                <a href="#">CONTATO</a>
+            </nav>
+            <a href="tel:+559899999999" class="bg-yellow-500 hover:bg-yellow-400 text-black px-6 py-2 rounded-full font-bold text-md">Tel: 98 9 9999-9999</a>
+        </header>
+
+        <main class="desktop-main">
+            <h1 id="desktop-burger-name" class="desktop-burger-title">BURGUER 1</h1>
+            <div class="desktop-burger-container">
+                <button class="desktop-nav-button left" onclick="prevBurger()">&#8249;</button>
+                <img id="desktop-burger-image" src="assets/header.png" alt="Hambúrguer" class="desktop-burger-image">
+                <button class="desktop-nav-button right" onclick="nextBurger()">&#8250;</button>
+            </div>
+            <p class="text-sm italic mt-2 text-center">*Imagem meramente ilustrativa</p>
+            <div class="desktop-info">
+                <h2 class="text-2xl text-yellow-500 mb-4">SEU BURGUER CASEIRO</h2>
+                <p class="text-xl mb-5">Clique em nosso cardápio no menu para mais informações</p>
+                <a href="#cardapio" class="bg-yellow-500 hover:bg-yellow-400 text-black px-6 py-3 font-bold rounded transition">IR PARA CARDÁPIO</a>
+            </div>
+        </main>
+
+        <aside class="desktop-social">
+            <a href="#" class="bg-transparent hover:bg-yellow-500 p-4 flex justify-center items-center w-17 h-12 transition">
+                <img src="assets/facebook.png" alt="Facebook" class="w-6 h-6">
+            </a>
+            <a href="#" class="bg-transparent hover:bg-yellow-500 p-4 flex justify-center items-center w-17 h-12 transition">
+                <img src="assets/whatsapp.png" alt="WhatsApp" class="w-6 h-6">
+            </a>
+            <a href="#" class="bg-transparent hover:bg-yellow-500 p-4 flex justify-center items-center w-17 h-12 transition">
+                <img src="assets/instagram.png" alt="Instagram" class="w-6 h-6">
+            </a>
+        </aside>
+    </div>
+
+    <!-- Mobile Layout -->
+    <div class="mobile-only">
+        <header class="menu-desktop py-5 px-10 relative">
+            <div>
+                <img src="assets/logo.png" alt="Burguer Grill Logo" class="h-14">
+            </div>
+            <nav class="md:flex gap-10 hidden">
+                <a href="#" class="relative text-lg font-bold active">HOME</a>
+                <a href="#" class="relative text-lg font-bold">CARDÁPIO</a>
+                <a href="#" class="relative text-lg font-bold">CONTATO</a>
+            </nav>
+
+            <div class="hamburger md:hidden" onclick="toggleMenu()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+
+            <div id="mobileMenu" class="mobile-menu md:hidden">
+                <span class="close-btn" onclick="toggleMenu()">&times;</span>
+                <a href="#" class="text-md">HOME</a>
+                <a href="#">CARDÁPIO</a>
+                <a href="#">CONTATO</a> 
+                <a href="tel:+559899999999" class="mobile-phone-button text-black">Tel: 98 9 9999-9999</a>
+            </div>
+
+            <a href="tel:+559899999999" class="bg-yellow-500 hover:bg-yellow-400 text-black px-6 py-2 rounded-full font-bold text-md contact-button hidden md:block">Tel: 98 9 9999-9999</a>
+        </header>
+
+        <div class="section-principal relative text-center pt-12">
+            <h1 id="burger-name" class="text-8xl font-bold uppercase tracking-tight">BURGUER 1</h1>
+
+            <div class="navigation-buttons">
+                <button class="bg-yellow-500 hover:bg-yellow-400 w-16 h-16 rounded-full text-black text-5xl flex items-center justify-center" onclick="prevBurger()">&#8249;</button>
+                <button class="bg-yellow-500 hover:bg-yellow-400 w-16 h-16 rounded-full text-black text-5xl flex items-center justify-center" onclick="nextBurger()">&#8250;</button>
+            </div>
+
+            <img id="burger-image" src="assets/header.png" alt="Hambúrguer" class="mx-auto z-10 relative burger-image">
+            <p class="text-sm italic mt-1 text-center">*Imagem meramente ilustrativa</p>
+            <div class="section-informacoes-burguer mt-5">
+                <h2 class="text-2xl text-yellow-500 mb-4">SEU BURGUER CASEIRO</h2>
+                <p class="text-xl mb-5">Clique em nosso cardápio no menu para mais informações</p>
+                <a href="#cardapio" class="bg-yellow-500 hover:bg-yellow-400 text-black px-6 py-3 font-bold rounded transition">IR PARA CARDÁPIO</a>
+            </div>
+        </div>
+
+        <footer class="social-icons mt-2">
+            <a href="#"><img src="assets/instagram.png" alt="Instagram" class="w-10 h-10"></a>
+            <a href="#"><img src="assets/whatsapp.png" alt="WhatsApp" class="w-10 h-10"></a>
+            <a href="#"><img src="assets/facebook.png" alt="Facebook" class="w-10 h-10"></a>
+        </footer>
+    </div>
+
+    <script>
+        const burgers = [
+            { name: "BURGUER 1", img: "assets/header.png" },
+            { name: "BURGUER 2", img: "assets/header-2.png" },
+            { name: "BURGUER 3", img: "assets/header-3.png" }
+        ];
+
+        let currentIndex = 0;
+
+        function nextBurger() {
+            currentIndex = (currentIndex + 1) % burgers.length;
+            updateCarousel("slide-in-left");
+        }
+
+        function prevBurger() {
+            currentIndex = (currentIndex - 1 + burgers.length) % burgers.length;
+            updateCarousel("slide-in-right");
+        }
+
+        function updateCarousel(animationClass) {
+            const burgerImage = document.getElementById("burger-image");
+            const burgerName = document.getElementById("burger-name");
+            const desktopBurgerImage = document.getElementById("desktop-burger-image");
+            const desktopBurgerName = document.getElementById("desktop-burger-name");
+
+            burgerImage.classList.remove("slide-in-left", "slide-in-right");
+            void burgerImage.offsetWidth;
+
+            burgerName.textContent = burgers[currentIndex].name;
+            burgerImage.src = burgers[currentIndex].img;
+            burgerImage.classList.add(animationClass);
+
+            // Update desktop version
+            if (desktopBurgerImage && desktopBurgerName) {
+                desktopBurgerName.textContent = burgers[currentIndex].name;
+                desktopBurgerImage.src = burgers[currentIndex].img;
+                desktopBurgerImage.classList.remove("slide-in-left", "slide-in-right");
+                void desktopBurgerImage.offsetWidth;
+                desktopBurgerImage.classList.add(animationClass);
+            }
+        }
+
+        setInterval(nextBurger, 5000);
+
+        function toggleMenu() {
+            const mobileMenu = document.getElementById("mobileMenu");
+            if (mobileMenu.classList.contains("active")) {
+                mobileMenu.style.animation = "slideOutRight 0.3s forwards";
+                setTimeout(() => {
+                    mobileMenu.classList.remove("active");
+                    mobileMenu.style.animation = "";
+                }, 300);
+            } else {
+                mobileMenu.classList.add("active");
+            }
+        }
+    </script>
+</body>
+</html>
